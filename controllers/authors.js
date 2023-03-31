@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Op, Sequelize } = require('sequelize')
+const { Sequelize } = require('sequelize')
 
 const { Blog } = require('../models')
 
@@ -21,12 +21,3 @@ router.get('/', async (req, res) => {
 })
 
 module.exports = router
-
-/*
-attributes: [
-      'author',
-      //[Sequelize.fn('COUNT', Sequelize.col('author')), 'n_author'],
-      'likes'
-    ]
-
-*/
