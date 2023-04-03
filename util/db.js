@@ -8,7 +8,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL)
 const connectToDatabase = async () => {
   try {
     await sequelize.authenticate()
-    await runMigrations()
+    //await runMigrations()
     console.log('database connected')
   } catch (err) {
     console.log('connecting database failed')
@@ -27,6 +27,7 @@ const migrationConf = {
   logger: console,
 }
 const runMigrations = async () => {
+  await sequelize.authenticate()
   const migrator = new Umzug(migrationConf)
   const migrations = await migrator.up()
   console.log('Migrations up to date', {
@@ -39,4 +40,4 @@ const rollbackMigration = async () => {
   await migrator.down()
 }
 
-module.exports = { connectToDatabase, sequelize, rollbackMigration }
+module.exports = { connectToDatabase, sequelize, rollbackMigration, runMigrations }
