@@ -1,8 +1,7 @@
 const { Model, DataTypes } = require('sequelize')
 
 const { sequelize } = require('../util/db')
-const { INTEGER } = require('sequelize')
-const { BOOLEAN } = require('sequelize')
+
 
 class Readinglist extends Model {}
 
