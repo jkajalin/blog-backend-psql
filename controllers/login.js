@@ -33,7 +33,8 @@ router.post('/', async (request, response) => {
   }
 
   const token = jwt.sign(userForToken, SECRET)
-
+  console.log(token)
+  
   response
     .status(200)
     .send({ token, username: user.username, name: user.name })
