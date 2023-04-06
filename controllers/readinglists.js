@@ -28,6 +28,7 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', tokenExtractor, async (req, res) => {
+  
   //const user = await User.findByPk(req.decodedToken.id)
   const listItem = await Readinglist.findByPk(req.params.id)
 
