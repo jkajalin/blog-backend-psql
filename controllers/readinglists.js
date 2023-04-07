@@ -2,7 +2,8 @@ const router = require('express').Router()
 
 const { Readinglist } = require('../models')
 
-const { tokenExtractor } = require('../middlewares/tokenExtractor')
+//const { tokenExtractor } = require('../middlewares/tokenExtractor')
+const { sessionValidator } = require('../middlewares/sessionValidator')
 
 // list all values
 router.get('/', async (req, res) => {
@@ -27,7 +28,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.put('/:id', tokenExtractor, async (req, res) => {
+router.put('/:id', sessionValidator, async (req, res) => {
   
   //const user = await User.findByPk(req.decodedToken.id)
   const listItem = await Readinglist.findByPk(req.params.id)

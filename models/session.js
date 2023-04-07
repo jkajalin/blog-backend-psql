@@ -27,3 +27,5 @@ Session.init({
   timestamps: false,
   modelName: 'session'
 })
+
+module.exports = Session

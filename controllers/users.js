@@ -1,8 +1,10 @@
 const router = require('express').Router()
 const bcrypt = require('bcrypt')
-const { tokenExtractor } = require('../middlewares/tokenExtractor')
+//const { tokenExtractor } = require('../middlewares/tokenExtractor')
+const { sessionValidator } = require('../middlewares/sessionValidator')
 
 const { User, Blog, Readinglist } = require('../models')
+
 
 router.get('/', async (req, res) => {
   const users = await User.findAll({
@@ -57,7 +59,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // set new username for loggen in user
-router.put('/:username', tokenExtractor, async (req, res) => {
+router.put('/:username', sessionValidator, async (req, res) => {
   const user = await User.findByPk(req.decodedToken.id)
   //const user = await User.findByPk(req.params.id)
   //const username = req.params.username
